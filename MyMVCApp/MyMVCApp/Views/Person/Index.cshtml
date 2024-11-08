@@ -1,0 +1,39 @@
+@model IEnumerable<FormValidationGridApp.Models.Person>
+
+<div class="container mt-4">
+    <h2 class="text-center">Person List</h2>
+    <p>
+        @Html.ActionLink("Add New Person", "Create", null, new { @class = "btn btn-success mb-3" })
+    </p>
+
+    @if (Model.Any())
+    {
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var person in Model)
+                {
+                    <tr>
+                        <td>@person.FirstName</td>
+                        <td>@person.LastName</td>
+                        <td>@person.Email</td>
+                        <td>@person.Age</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+            No persons added yet. Please add a new person.
+        </div>
+    }
+</div>
